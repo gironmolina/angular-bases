@@ -2,7 +2,7 @@ import { effect, Injectable, signal } from '@angular/core';
 import { Character } from '../interfaces/character.interface';
 
 const loadFromLocalStorage = (): Character[] => {
-  const characters = localStorage.getItem('character');
+  const characters = localStorage.getItem('character ');
   return characters ? JSON.parse(characters) : [];
 }
 
