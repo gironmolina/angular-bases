@@ -17,8 +17,20 @@ export class ProductsService {
   private readonly http = inject(HttpClient);
 
   getProducts(Options: Options): Observable<ProductsResponse> {
+    const { limit = 10, offset = 0, gender = '' } = Options;
+
     return this.http
-      .get<ProductsResponse>(`${baseUrl}/products`)
-      .pipe(tap((resp) => console.log(resp)));
+      .get<ProductsResponse>(`${baseUrl}/products`, {
+        params: {
+          limit,
+          offset,
+          gender,
+        },
+      })
+      .pipe(
+        tap((response) => {
+          console.log(response);
+        })
+      );
   }
 }
