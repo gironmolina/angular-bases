@@ -19,18 +19,12 @@ export class ProductsService {
   getProducts(Options: Options): Observable<ProductsResponse> {
     const { limit = 10, offset = 0, gender = '' } = Options;
 
-    return this.http
-      .get<ProductsResponse>(`${baseUrl}/products`, {
-        params: {
-          limit,
-          offset,
-          gender,
-        },
-      })
-      .pipe(
-        tap((response) => {
-          console.log(response);
-        })
-      );
+    return this.http.get<ProductsResponse>(`${baseUrl}/products`, {
+      params: {
+        limit,
+        offset,
+        gender,
+      },
+    });
   }
 }
