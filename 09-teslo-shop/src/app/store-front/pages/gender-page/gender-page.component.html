@@ -9,6 +9,8 @@
   @for (product of productsResource.value()?.products; track product.id) {
   <product-card [product]="product" />
   }@empty {
-  <p>No hay productos</p>
+    @if (!productsResource.isLoading()) {
+      <p>No hay productos</p>
+    }
   }
 </div>
